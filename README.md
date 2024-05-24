@@ -45,10 +45,10 @@ This REST API manages a library system where CRUD operations can be performed on
 
 ### Environment Variables
 
-- `DATABASE_URL`: The full URL to connect to your MySQL database. Format: `mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME`
+- `DATABASE_URL`: The full URL to connect to your MySQL database. Format: `mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME`.
 - `PORT`: The port on which the server will run. Default is `3000`.
-- `HOST`: The host on which the server will run. Default is `localhost`
-- `NODE_ENV`: The environment in which the server will run. Default is `development`
+- `HOST`: The host on which the server will run. Default is `localhost`.
+- `NODE_ENV`: The environment in which the server will run. Default is `development`.
 
 ## API Documentation
 
