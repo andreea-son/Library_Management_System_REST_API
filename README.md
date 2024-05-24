@@ -59,6 +59,46 @@ After starting the server, access the API documentation at `http://localhost:300
 Below is a conceptual diagram of the database:
 ![Database Diagram](./Diagrama.png "Database Diagram")
 
+## Application Flows. Using the REST API for Library Management
+
+### 1. User Registration
+   - **Endpoint:** `POST /users/signup`
+   - **Description:** The user registers by providing a username, email address, password, and optionally, a profile image.
+   - **Result:** The user's account is created in the system, and they receive a JWT (JSON Web Token) for authentication.
+
+### 2. Authentication
+   - **Endpoint:** `POST /users/signin`
+   - **Description:** The user logs in using their username and password.
+   - **Result:** The system validates the credentials and returns a JWT, which will be used to authorize subsequent requests.
+
+### 3. Accessing the List of Books Filtered by Price Range
+   - **Endpoint:** `GET /books`
+   - **Description:** The authenticated user requests a list of books within a specified price range. Users can filter the books by providing `lowerPrice` and `upperPrice` as query parameters.
+   - **Query Parameters:**
+   - `lowerPrice`: The minimum price for books in the search results.
+   - `upperPrice`: The maximum price for books in the search results.
+   - **Result:** The API returns a list of books that fall within the specified price range. Each book includes details such as title, author, and price.
+
+### 4. Adding a New Book
+   - **Endpoint:** `POST /books`
+   - **Description:** The user adds a new book to the system, providing necessary details such as title, genre, publication date, and price.
+   - **Result:** The book is created in the database and returned as confirmation.
+
+### 6. Updating Book Information
+   - **Endpoint:** `PATCH /books/{id}`
+   - **Description:** The user updates the information of an existing book, such as its price or genre.
+   - **Result:** The book's details are updated in the database.
+
+### 7. Deleting a Book
+   - **Endpoint:** `DELETE /books/{id}`
+   - **Description:** The user decides to remove a book from the system.
+   - **Result:** The book is deleted from the database.
+
+### 8. Viewing User Profile
+   - **Endpoint:** `GET /users/profile`
+   - **Description:** The user views the details of their own profile.
+   - **Result:** Details of the user's profile are returned.
+     
 ## Author
 
 **Son Andreea Marina**
