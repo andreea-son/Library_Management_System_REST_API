@@ -1,0 +1,197 @@
+components:
+  schemas:
+    authorCreateDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        nationality:
+          type: string
+      required:
+        - name
+    authorUpdateDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        nationality:
+          type: string
+    author:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        nationality:
+          type: string
+      required:
+        - id
+        - name
+
+    bookCreateDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        genre:
+          type: string
+        publishDate:
+          type: string
+          format: date
+          example: 2024-05-25
+        price:
+          type: number
+        authorId:
+          type: integer
+        publisherId:
+          type: integer
+      required:
+        - title
+        - genre
+        - authorId
+        - publisherId
+    bookUpdateDTO:
+      type: object
+      properties:
+        title:
+          type: string
+        genre:
+          type: string
+        publishDate:
+          type: string
+          format: date
+        price:
+          type: number
+        authorId:
+          type: integer
+        publisherId:
+          type: integer
+    book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+        genre:
+          type: string
+        publishDate:
+          type: string
+          format: date
+        price:
+          type: number
+          format: float
+        authorId:
+          type: integer
+          format: int32
+        publisherId:
+          type: integer
+          format: int32
+      required:
+        - id
+        - title
+        - authorId
+        - publisherId
+
+    publisherCreateDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        city:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+    publisherUpdateDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        city:
+          type: string
+        phone:
+          type: string
+    publisher:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        city:
+          type: string
+        phone:
+          type: string
+      required:
+        - id
+        - name
+
+    userSignUpDTO:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        profileImage:
+          type: string
+      required:
+        - username
+        - email
+        - password
+    userSignInDTO:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    user:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          format: password
+        profileImage:
+          type: string
+          nullable: true
+      required:
+        - id
+        - username
+        - email
+        - password
+
+    blacklistedToken:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        token:
+          type: string
+          format: byte
+        expiresAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - token
+        - expiresAt

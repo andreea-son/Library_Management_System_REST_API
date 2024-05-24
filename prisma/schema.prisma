@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Author {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  nationality String 
+  books       Book[]
+
+  @@map("author")
+}
+
+model Book {
+  id          Int         @id @default(autoincrement())
+  title       String
+  genre       String
+  publishDate DateTime    @map("publish_date")
+  price       Float
+  authorId    Int         @map("author_id")
+  publisherId Int         @map("publisher_id")
+  Author      Author      @relation(fields: [authorId], references: [id])
+  Publisher   Publisher   @relation(fields: [publisherId], references: [id])
+
+  @@map("book")
+}
+
+model Publisher {
+  id      Int    @id @default(autoincrement())
+  name    String @unique
+  city    String
+  phone   String
+  books   Book[]
+
+  @@map("publisher")
+}
+
+model User {
+  id           Int     @id @default(autoincrement())
+  username     String  @unique
+  email        String  @unique
+  password     String
+  profileImage String? @map("profile_image")
+
+  @@map("user")
+}
+
+model BlacklistedToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique @db.VarChar(2048)
+  expiresAt DateTime
+
+  @@map("blacklisted_token")
+}
